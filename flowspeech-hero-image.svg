@@ -1,0 +1,144 @@
+<svg viewBox="0 0 1200 600" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background gradient -->
+  <defs>
+    <linearGradient id="bgGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#4F46E5;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#7C3AED;stop-opacity:1" />
+    </linearGradient>
+    
+    <!-- Speech wave pattern -->
+    <pattern id="speechPattern" x="0" y="0" width="120" height="20" patternUnits="userSpaceOnUse">
+      <path d="M0,10 Q15,20 30,10 Q45,0 60,10 Q75,20 90,10 Q105,0 120,10" fill="none" stroke="rgba(255,255,255,0.15)" stroke-width="3" />
+    </pattern>
+    
+    <!-- Circle glow -->
+    <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="5" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+    
+    <!-- Analysis data pattern -->
+    <pattern id="dataPattern" x="0" y="0" width="100" height="30" patternUnits="userSpaceOnUse">
+      <line x1="10" y1="0" x2="10" y2="20" stroke="rgba(255,255,255,0.2)" stroke-width="2" />
+      <line x1="30" y1="0" x2="30" y2="15" stroke="rgba(255,255,255,0.2)" stroke-width="2" />
+      <line x1="40" y1="0" x2="40" y2="8" stroke="rgba(255,255,255,0.2)" stroke-width="2" />
+      <line x1="60" y1="0" x2="60" y2="18" stroke="rgba(255,255,255,0.2)" stroke-width="2" />
+      <line x1="75" y1="0" x2="75" y2="12" stroke="rgba(255,255,255,0.2)" stroke-width="2" />
+      <line x1="90" y1="0" x2="90" y2="25" stroke="rgba(255,255,255,0.2)" stroke-width="2" />
+    </pattern>
+  </defs>
+  
+  <!-- Main background -->
+  <rect width="1200" height="600" fill="url(#bgGradient)" />
+  
+  <!-- Speech wave pattern background -->
+  <rect width="1200" height="600" fill="url(#speechPattern)" opacity="0.5" />
+  
+  <!-- Left side: Person speaking -->
+  <g transform="translate(250, 300)">
+    <!-- Head -->
+    <circle cx="0" cy="0" r="100" fill="#ffffff" />
+    
+    <!-- Face features (minimal) -->
+    <ellipse cx="-25" cy="-20" rx="8" ry="12" fill="#333333" /> <!-- Left eye -->
+    <ellipse cx="25" cy="-20" rx="8" ry="12" fill="#333333" /> <!-- Right eye -->
+    <path d="M-30,40 Q0,70 30,40" fill="none" stroke="#333333" stroke-width="5" stroke-linecap="round" /> <!-- Smile -->
+    
+    <!-- Speech waves emanating from person -->
+    <path d="M100,0 Q130,-40 160,0 Q190,40 220,0 Q250,-40 280,0" fill="none" stroke="#ffffff" stroke-width="6" stroke-linecap="round" opacity="0.7" />
+    <path d="M100,30 Q130,-10 160,30 Q190,70 220,30 Q250,-10 280,30" fill="none" stroke="#ffffff" stroke-width="4" stroke-linecap="round" opacity="0.5" />
+    <path d="M100,-30 Q130,-70 160,-30 Q190,10 220,-30 Q250,-70 280,-30" fill="none" stroke="#ffffff" stroke-width="4" stroke-linecap="round" opacity="0.5" />
+  </g>
+  
+  <!-- Right side: App analysis visualization -->
+  <g transform="translate(700, 300)">
+    <!-- Phone or device frame -->
+    <rect x="-125" y="-200" width="250" height="400" rx="20" ry="20" fill="#ffffff" />
+    <rect x="-115" y="-190" width="230" height="380" rx="15" ry="15" fill="#f8f9fa" />
+    
+    <!-- App screen elements -->
+    <!-- Header -->
+    <rect x="-115" y="-190" width="230" height="60" fill="#4F46E5" rx="15" ry="15" />
+    <text x="0" y="-150" font-family="Arial" font-size="20" fill="white" text-anchor="middle" font-weight="bold">FlowSpeech</text>
+    
+    <!-- Speech analysis visualization -->
+    <!-- Repetition detection -->
+    <g transform="translate(0, -100)">
+      <rect x="-100" y="-15" width="200" height="30" rx="5" ry="5" fill="#e0e7ff" />
+      <text x="-90" y="5" font-family="Arial" font-size="14" fill="#4338ca">Repetition</text>
+      <rect x="0" y="-10" width="90" height="20" rx="5" ry="5" fill="#4338ca" />
+      <text x="45" y="5" font-family="Arial" font-size="14" fill="white" text-anchor="middle">12%</text>
+    </g>
+    
+    <!-- Hesitation detection -->
+    <g transform="translate(0, -50)">
+      <rect x="-100" y="-15" width="200" height="30" rx="5" ry="5" fill="#e0e7ff" />
+      <text x="-90" y="5" font-family="Arial" font-size="14" fill="#4338ca">Hesitation</text>
+      <rect x="0" y="-10" width="65" height="20" rx="5" ry="5" fill="#4338ca" />
+      <text x="32.5" y="5" font-family="Arial" font-size="14" fill="white" text-anchor="middle">8%</text>
+    </g>
+    
+    <!-- Filler word detection -->
+    <g transform="translate(0, 0)">
+      <rect x="-100" y="-15" width="200" height="30" rx="5" ry="5" fill="#e0e7ff" />
+      <text x="-90" y="5" font-family="Arial" font-size="14" fill="#4338ca">Filler Words</text>
+      <rect x="0" y="-10" width="110" height="20" rx="5" ry="5" fill="#4338ca" />
+      <text x="55" y="5" font-family="Arial" font-size="14" fill="white" text-anchor="middle">15%</text>
+    </g>
+    
+    <!-- Topic relevance detection -->
+    <g transform="translate(0, 50)">
+      <rect x="-100" y="-15" width="200" height="30" rx="5" ry="5" fill="#e0e7ff" />
+      <text x="-90" y="5" font-family="Arial" font-size="14" fill="#4338ca">Topic Relevance</text>
+      <rect x="0" y="-10" width="135" height="20" rx="5" ry="5" fill="#4338ca" />
+      <text x="67.5" y="5" font-family="Arial" font-size="14" fill="white" text-anchor="middle">92%</text>
+    </g>
+    
+    <!-- Speech waveform at bottom -->
+    <rect x="-100" y="85" width="200" height="80" rx="5" ry="5" fill="#e0e7ff" />
+    <path d="M-90,125 Q-80,105 -70,125 Q-60,145 -50,125 Q-40,105 -30,125 Q-20,145 -10,125 Q0,105 10,125 Q20,145 30,125 Q40,105 50,125 Q60,145 70,125 Q80,105 90,125" 
+          fill="none" stroke="#4338ca" stroke-width="3" />
+  </g>
+  
+  <!-- Connecting elements between person and app -->
+  <g>
+    <!-- Data flow visualization -->
+    <path d="M520,300 C580,250 620,250 680,300" fill="none" stroke="#ffffff" stroke-width="3" stroke-dasharray="10,5" />
+    
+    <!-- Small data dots along the path -->
+    <circle cx="550" cy="285" r="5" fill="#ffffff" filter="url(#glow)" />
+    <circle cx="580" cy="275" r="5" fill="#ffffff" filter="url(#glow)" />
+    <circle cx="610" cy="275" r="5" fill="#ffffff" filter="url(#glow)" />
+    <circle cx="640" cy="285" r="5" fill="#ffffff" filter="url(#glow)" />
+  </g>
+  
+  <!-- Abstract data elements in background -->
+  <rect x="100" y="450" width="300" height="60" fill="url(#dataPattern)" opacity="0.5" />
+  <rect x="800" y="100" width="300" height="60" fill="url(#dataPattern)" opacity="0.5" />
+  
+  <!-- Floating icons representing features -->
+  <!-- Repetition icon -->
+  <g transform="translate(200, 150)">
+    <circle cx="0" cy="0" r="30" fill="rgba(255,255,255,0.2)" />
+    <path d="M-10,-10 L-10,10 L10,10 L10,-10 Z M-15,0 L-25,0 M-20,-5 L-20,5 M15,0 L25,0 M20,-5 L20,5" 
+          fill="none" stroke="#ffffff" stroke-width="3" stroke-linecap="round" />
+  </g>
+  
+  <!-- Hesitation icon -->
+  <g transform="translate(950, 450)">
+    <circle cx="0" cy="0" r="30" fill="rgba(255,255,255,0.2)" />
+    <path d="M-10,-10 C-10,0 10,0 10,10 M-5,-15 L-15,-5 M5,15 L15,5" 
+          fill="none" stroke="#ffffff" stroke-width="3" stroke-linecap="round" />
+  </g>
+  
+  <!-- Topic relevance icon -->
+  <g transform="translate(1000, 200)">
+    <circle cx="0" cy="0" r="30" fill="rgba(255,255,255,0.2)" />
+    <circle cx="0" cy="0" r="15" fill="none" stroke="#ffffff" stroke-width="3" />
+    <circle cx="0" cy="0" r="5" fill="#ffffff" />
+    <line x1="0" y1="-15" x2="0" y2="-25" stroke="#ffffff" stroke-width="3" stroke-linecap="round" />
+    <line x1="15" y1="0" x2="25" y2="0" stroke="#ffffff" stroke-width="3" stroke-linecap="round" />
+    <line x1="0" y1="15" x2="0" y2="25" stroke="#ffffff" stroke-width="3" stroke-linecap="round" />
+    <line x1="-15" y1="0" x2="-25" y2="0" stroke="#ffffff" stroke-width="3" stroke-linecap="round" />
+  </g>
+</svg>
